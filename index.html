@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Minimal Luxury Web Studio</title>
+  <title>BIM Labs – Luxury Digital Studio</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <style>
@@ -13,7 +13,8 @@
       --blue-light: #6EC1E4;
       --white: #fff;
       --gray: #F5F6F8;
-      --gray-dark: #C8D0D8;
+      --glass: rgba(40,60,80,0.28);
+      --glass2: rgba(30,35,48,0.66);
     }
     body {
       margin: 0;
@@ -27,194 +28,474 @@
     }
     a { color: var(--blue); text-decoration: none; transition: color .18s;}
     a:hover { color: var(--blue-light); }
-    .section {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 5rem 5vw 3.5rem 5vw;
-      border-bottom: 1px solid #1e232e;
+    /* --- Animated Logo --- */
+    .logo-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 3rem auto 2rem auto;
+      width: 100%;
     }
-    .section:last-child {
-      border-bottom: none;
-      padding-bottom: 6rem;
+    .letters { display: flex; align-items: center; }
+    .letters span {
+      font-size: 58px;
+      font-weight: 700;
+      opacity: 0;
+      transform: translateY(20px);
+      display: inline-block;
+      margin-right: 2px;
+      animation: slideFade 0.8s forwards ease-out;
+      font-family: 'Montserrat', Arial, sans-serif;
+      letter-spacing: 0.03em;
     }
-    .section-title {
-      font-size: 2.2rem;
-      font-weight: 900;
-      color: var(--blue);
-      margin-bottom: 1.7rem;
-      letter-spacing: 0.04em;
-      line-height: 1.1;
+    .letters span:nth-child(-n+3) { color: #E6E6E6; }
+    .letters span:nth-child(n+4) { color: #4EC6FF; }
+    .letters span:nth-child(3) { margin-right: 16px; }
+    .letters span:nth-child(1) { animation-delay: 0.18s; }
+    .letters span:nth-child(2) { animation-delay: 0.32s; }
+    .letters span:nth-child(3) { animation-delay: 0.44s; }
+    .letters span:nth-child(4) { animation-delay: 0.56s; }
+    .letters span:nth-child(5) { animation-delay: 0.68s; }
+    .letters span:nth-child(6) { animation-delay: 0.80s; }
+    .letters span:nth-child(7) { animation-delay: 0.92s; }
+    @keyframes slideFade { to { opacity: 1; transform: translateY(0); } }
+    .symbol {
+      width: 56px;
+      height: 56px;
+      margin-left: 24px;
+      display: inline-block;
+      vertical-align: middle;
     }
-    /* HERO */
+    .symbol path.outline {
+      fill: none;
+      stroke: #4EC6FF;
+      stroke-width: 5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: var(--length);
+      stroke-dashoffset: var(--length);
+      animation: draw 1.3s forwards cubic-bezier(.4,0,.2,1);
+    }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    .symbol path.fill-shape {
+      fill: #4EC6FF;
+      opacity: 0;
+      animation: fadeInFill 0.6s forwards;
+      animation-delay: 1.3s;
+    }
+    @keyframes fadeInFill { to { opacity: 1; } }
+    @media (max-width: 700px) {
+      .logo-container { margin: 1.2rem auto 1.2rem auto; }
+      .letters span { font-size: 32px; }
+      .symbol { width: 28px; height: 28px; margin-left: 10px;}
+    }
+    /* --- HERO --- */
     .hero {
+      min-height: 78vh;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
       justify-content: center;
-      min-height: 84vh;
-      padding-top: 6vh;
-      border-bottom: 1px solid #22282f;
-      background: var(--black);
+      padding: 8vh 0 7vh 0;
+      align-items: flex-start;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
     }
     .hero-headline {
-      font-size: 2.7rem;
+      font-size: 3.1rem;
       font-weight: 900;
-      line-height: 1.09;
       color: var(--white);
-      margin-bottom: 0.8em;
-      max-width: 660px;
-      letter-spacing: 0.02em;
+      line-height: 1.08;
+      margin-bottom: 1.1em;
+      letter-spacing: 0.01em;
+      background: linear-gradient(90deg,#fff 90%,#4EC6FF 120%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-    .hero-highlight {
-      color: var(--blue);
+    .hero-underline {
+      display: inline-block;
+      width: 92px;
+      height: 5px;
+      border-radius: 3px;
+      margin: 10px 0 30px 4px;
+      background: linear-gradient(90deg,#4EC6FF,#101014 90%);
+      animation: underlineGrow 1.2s .9s cubic-bezier(.4,0,.2,1) both;
+    }
+    @keyframes underlineGrow {
+      0% { width: 0; opacity: 0; }
+      100% { width: 92px; opacity: 1; }
     }
     .hero-sub {
-      font-size: 1.23rem;
+      font-size: 1.29rem;
       font-weight: 400;
-      opacity: 0.86;
-      margin-bottom: 2.3em;
-      max-width: 560px;
+      opacity: 0.88;
+      max-width: 480px;
+      margin-bottom: 2.8em;
+      color: var(--white);
     }
     .hero-btn {
-      padding: 0.9em 2.6em;
+      padding: 1.1em 3em;
       border-radius: 2em;
       font-weight: 700;
-      font-size: 1.09rem;
+      font-size: 1.13rem;
       background: var(--blue);
       color: var(--black);
       border: none;
-      box-shadow: 0 2px 16px #4ec6ff23;
-      transition: background .15s, box-shadow .18s, color .15s;
+      box-shadow: 0 2px 16px #4ec6ff2c;
+      transition: background .15s, box-shadow .18s, color .15s, transform .15s;
       cursor: pointer;
+      position: relative;
+      overflow: hidden;
     }
     .hero-btn:hover {
       background: var(--white);
       color: var(--blue);
       box-shadow: 0 4px 32px #4ec6ff45;
+      transform: scale(1.04);
     }
-    /* ABOUT */
+    /* --- ABOUT --- */
+    .about-wrap {
+      display: flex;
+      gap: 3.5rem;
+      align-items: flex-start;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 5.5rem 0 5rem 0;
+    }
+    .about-glass {
+      background: var(--glass2);
+      backdrop-filter: blur(8px);
+      border-radius: 2em;
+      box-shadow: 0 4px 36px #4ec6ff18, 0 1px 8px #0006;
+      padding: 2.8em 2.4em;
+      min-width: 320px;
+      max-width: 480px;
+      margin-right: 1.5em;
+      color: var(--white);
+    }
+    .about-title {
+      font-size: 2.05rem;
+      color: var(--blue);
+      font-weight: 800;
+      margin-bottom: 1.2em;
+    }
     .about-text {
-      font-size: 1.14rem;
-      opacity: .95;
-      line-height: 1.7;
-      max-width: 680px;
-      margin-bottom: 1.7em;
+      font-size: 1.15rem;
+      opacity: .96;
+      line-height: 1.65;
+      margin-bottom: 0.7em;
+      color: var(--white);
     }
-    /* FEATURES */
+    .about-img {
+      border-radius: 1.5em;
+      width: 300px;
+      max-width: 36vw;
+      object-fit: cover;
+      box-shadow: 0 4px 36px #4ec6ff10;
+      background: #21242d;
+    }
+    @media (max-width:900px) {
+      .about-wrap { flex-direction: column; gap: 2.1rem; padding:3.2rem 0 3rem 0; }
+      .about-img { width: 92vw; max-width: 320px; margin: 0 auto; }
+    }
+    /* --- FEATURES --- */
+    .features-section {
+      background: linear-gradient(90deg,#101014 70%,#1d232c 100%);
+      padding: 6rem 0 5.5rem 0;
+      position: relative;
+      overflow: hidden;
+    }
     .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
+      gap: 2.4rem;
+      max-width: 1080px;
+      margin: 0 auto;
     }
     .feature-card {
-      background: #17191c;
-      border-radius: 1.3em;
-      padding: 2.2em 1.6em;
-      box-shadow: 0 3px 24px #4ec6ff0a;
-      border: 1.5px solid #212226;
+      background: rgba(34,38,49,0.95);
+      border-radius: 1.6em;
+      padding: 2.7em 1.8em 2em 1.8em;
+      box-shadow: 0 6px 32px #4ec6ff16;
+      border: 1.5px solid #22252a;
       color: var(--white);
-      text-align: left;
-      transition: border .18s, box-shadow .19s;
-      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      min-height: 175px;
+      transition: box-shadow .18s, border .17s;
+      position: relative;
+      overflow: hidden;
     }
     .feature-card:hover {
       border-color: var(--blue);
-      box-shadow: 0 8px 36px #4ec6ff23;
+      box-shadow: 0 12px 42px #4ec6ff25, 0 2px 10px #0af2;
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      color: var(--blue);
+      margin-bottom: 1em;
+      filter: drop-shadow(0 2px 12px #4ec6ff55);
+      transition: color .18s, filter .18s;
     }
     .feature-title {
-      font-size: 1.17rem;
-      font-weight: 700;
-      color: var(--blue);
-      margin-bottom: 0.4em;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--blue-light);
+      margin-bottom: .4em;
     }
-    /* PORTFOLIO */
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-    .portfolio-card {
-      background: #191c21;
-      border-radius: 1.1em;
-      padding: 1.6em 1.4em 1.3em 1.4em;
-      border: 1.5px solid #1e232e;
-      transition: border .18s, box-shadow .2s;
-      box-shadow: 0 2px 18px #4ec6ff16;
-    }
-    .portfolio-card:hover {
-      border-color: var(--blue);
-      box-shadow: 0 10px 32px #4ec6ff28;
+    /* --- PORTFOLIO --- */
+    .portfolio-section {
+      background: linear-gradient(90deg,#171a22 75%,#101014 100%);
+      padding: 5rem 0 5.5rem 0;
     }
     .portfolio-title {
+      font-size: 2.3rem;
+      font-weight: 900;
       color: var(--blue);
-      font-weight: 700;
-      font-size: 1.09rem;
-      margin-bottom: .45em;
+      letter-spacing: 0.04em;
+      margin-bottom: 2.6rem;
+      text-shadow: 0 2px 12px #000a;
     }
-    /* SERVICES */
-    .services-list {
+    .portfolio-gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-      gap: 1.8rem;
-      margin-top: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(350px,1fr));
+      gap: 2.6rem;
+      max-width: 1100px;
+      margin: 0 auto;
     }
-    .service-item {
-      background: #15171b;
-      border-radius: 1.1em;
-      border: 1.5px solid #1e232e;
-      padding: 1.6em 1.2em;
-      font-size: 1.04rem;
-      color: var(--white);
-      transition: border .16s, box-shadow .2s;
-    }
-    .service-item:hover {
-      border-color: var(--blue);
-      box-shadow: 0 6px 26px #4ec6ff23;
-    }
-    /* TESTIMONIALS */
-    .testimonial-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2.1rem;
-      margin-top: 2rem;
-    }
-    .testimonial-card {
-      background: #16191d;
-      border-radius: 1.1em;
-      padding: 2.1em 1.4em 1.3em 1.4em;
-      color: var(--white);
-      border: 1.5px solid #1e232e;
-      box-shadow: 0 2px 12px #4ec6ff18;
+    .portfolio-card {
+      background: var(--glass2);
+      border-radius: 1.6em;
+      box-shadow: 0 4px 26px #4ec6ff10, 0 1px 7px #0006;
+      padding: 2.5em 2em 1.7em 2em;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      transition: box-shadow .16s, border .16s, transform .14s;
+      border: 1.5px solid #23262c;
       position: relative;
-      font-size: 1.05rem;
-      min-height: 130px;
+      min-height: 300px;
+      overflow: hidden;
     }
-    .testimonial-author {
-      margin-top: 1.3em;
+    .portfolio-card:hover {
+      box-shadow: 0 14px 42px #4ec6ff28, 0 2px 12px #fff3;
+      transform: translateY(-8px) scale(1.025);
+      border-color: var(--blue);
+    }
+    .portfolio-card img {
+      width: 100%;
+      border-radius: 1.2em;
+      margin-bottom: 1em;
+      box-shadow: 0 2px 16px #4ec6ff13;
+    }
+    .portfolio-desc {
+      color: #e3ecf3;
+      font-size: 1.13rem;
+      opacity: .93;
+      margin-bottom: .4em;
+      line-height: 1.54;
+    }
+    .portfolio-label {
+      background: #4ec6ff1a;
+      color: var(--blue);
+      font-size: .95em;
       font-weight: 700;
-      color: var(--blue-light);
-      font-size: 1.01rem;
+      padding: .22em .95em;
+      border-radius: 1em;
+      margin-left: 6px;
+      margin-bottom: 1.2em;
+      letter-spacing: .03em;
+      display: inline-block;
     }
-    /* PRICING */
-    .pricing-grid {
+    /* --- SERVICES --- */
+    .services-section {
+      background: var(--black);
+      padding: 5.5rem 0 5.5rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .services-list {
       display: flex;
       flex-wrap: wrap;
       gap: 2.1rem;
-      margin-top: 2.4rem;
+      justify-content: center;
+      margin-top: 3rem;
+    }
+    .service-card {
+      background: var(--glass2);
+      border-radius: 1.4em;
+      padding: 2.4em 2em 1.5em 2em;
+      min-width: 260px;
+      box-shadow: 0 4px 22px #4ec6ff14;
+      color: var(--white);
+      font-size: 1.11rem;
+      font-weight: 500;
+      transition: border .16s, box-shadow .19s, transform .15s;
+      border: 1.5px solid #1e232e;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      position: relative;
+      margin-bottom: 1.5em;
+    }
+    .service-card:hover {
+      border-color: var(--blue);
+      box-shadow: 0 12px 38px #4ec6ff29;
+      transform: scale(1.025);
+    }
+    .service-title {
+      color: var(--blue);
+      font-weight: 800;
+      font-size: 1.22rem;
+      margin-bottom: .65em;
+      letter-spacing: .04em;
+    }
+    .service-card a {
+      margin-top: 1em;
+      display: inline-block;
+      background: var(--blue);
+      color: var(--black);
+      padding: .62em 1.5em;
+      border-radius: 2em;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background .15s, color .14s, box-shadow .15s;
+      box-shadow: 0 1px 8px #4ec6ff22;
+    }
+    .service-card a:hover {
+      background: var(--white);
+      color: var(--blue);
+      box-shadow: 0 6px 18px #4ec6ff25;
+    }
+    /* --- DIFFERENCE --- */
+    .difference-section {
+      background: linear-gradient(120deg,#191e24 68%,#101014 100%);
+      padding: 6rem 0 6rem 0;
+      min-height: 480px;
+    }
+    .difference-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem 6vw;
+      justify-content: space-between;
+      max-width: 1040px;
+      margin: 0 auto;
+      align-items: flex-start;
+    }
+    .difference-card {
+      flex: 1 1 340px;
+      background: var(--glass2);
+      border-radius: 1.7em;
+      padding: 2.6em 2.1em 2.1em 2.1em;
+      box-shadow: 0 3px 24px #0003, 0 2px 14px #4ec6ff13;
+      border: 1.5px solid #1e232e;
+      max-width: 410px;
+      margin-bottom: 1.2em;
+      color: var(--white);
+      min-height: 290px;
+    }
+    .difference-title {
+      font-size: 1.38rem;
+      font-weight: 900;
+      color: var(--blue);
+      margin-bottom: 1.15em;
+      letter-spacing: .04em;
+    }
+    .difference-card ul {
+      padding: 0;
+      margin: 0 0 1.2em 0;
+      line-height: 1.75;
+      font-size: 1.11rem;
+      opacity: .9;
+      list-style: none;
+    }
+    .difference-card .total {
+      margin-top: 2.2em;
+      border-top: 1px solid #26272a;
+      padding-top: 1.3em;
+      font-size: 1.17rem;
+      opacity: .7;
+      background: #22242a;
+      display: inline-block;
+      padding: .55em 1.1em;
+      border-radius: 1.3em;
+      color: #fff;
+      margin-bottom: .5em;
+    }
+    .difference-card--bim {
+      border: 1.5px solid #4EC6FF;
+      box-shadow: 0 8px 36px #4ec6ff1a;
+      background: linear-gradient(120deg,#19243b 62%,#101014 100%);
+      color: var(--white);
+    }
+    .difference-card--bim .total {
+      background: var(--blue);
+      color: #101014;
+      font-weight: 800;
+      border: none;
+      opacity: 1;
+    }
+    /* --- TESTIMONIALS --- */
+    .testimonials-section {
+      background: #16191d;
+      padding: 6rem 0 5.5rem 0;
+      min-height: 340px;
+    }
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .testimonial-card {
+      background: var(--glass2);
+      border-radius: 1.1em;
+      padding: 2.5em 1.7em 1.8em 1.7em;
+      color: var(--white);
+      border: 1.5px solid #1e232e;
+      box-shadow: 0 4px 18px #4ec6ff13;
+      font-size: 1.17rem;
+      min-height: 140px;
+      position: relative;
+    }
+    .testimonial-author {
+      margin-top: 1.7em;
+      font-weight: 700;
+      color: var(--blue-light);
+      font-size: 1.02rem;
+    }
+    /* --- PRICING --- */
+    .pricing-section {
+      background: #181b21;
+      padding: 5.5rem 0 6rem 0;
+      min-height: 340px;
+    }
+    .pricing-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.6rem;
+      margin-top: 2.6rem;
       justify-content: flex-start;
+      max-width: 980px;
+      margin-left: auto;
+      margin-right: auto;
     }
     .pricing-card {
-      background: #181b21;
+      background: var(--glass2);
       border-radius: 1.1em;
       border: 1.5px solid #1e232e;
-      padding: 2.3em 2em 2em 2em;
-      min-width: 240px;
+      padding: 2.5em 2em 2em 2em;
+      min-width: 255px;
       box-shadow: 0 4px 18px #4ec6ff14;
       color: var(--white);
-      font-size: 1.09rem;
-      font-weight: 400;
+      font-size: 1.12rem;
+      font-weight: 500;
       transition: border .15s, box-shadow .18s;
+      position: relative;
+      overflow: hidden;
     }
     .pricing-card:hover {
       border-color: var(--blue);
@@ -222,28 +503,52 @@
     }
     .price {
       color: var(--blue);
-      font-size: 2rem;
+      font-size: 2.1rem;
       font-weight: 900;
-      margin-bottom: .4em;
-      margin-top: .2em;
+      margin-bottom: .44em;
+      margin-top: .25em;
+      display: block;
+      letter-spacing: .02em;
     }
-    /* CONTACT */
+    .best-value {
+      background: var(--blue);
+      color: var(--black);
+      font-weight: 900;
+      font-size: 1rem;
+      border-radius: 1em;
+      padding: .19em .9em;
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      box-shadow: 0 2px 10px #4ec6ff2a;
+      animation: pulse 1.5s infinite alternate;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 #4ec6ff10; }
+      100% { box-shadow: 0 0 16px #4ec6ff45; }
+    }
+    /* --- CONTACT --- */
+    .contact-section {
+      background: linear-gradient(110deg,#181b21 65%,#101014 100%);
+      padding: 6rem 0 6rem 0;
+    }
     .contact-form {
-      background: #191c21;
-      border-radius: 1.2em;
+      background: var(--glass2);
+      border-radius: 1.5em;
       border: 1.5px solid #1e232e;
-      box-shadow: 0 4px 22px #4ec6ff16;
-      max-width: 430px;
-      padding: 2.2em 2em;
+      box-shadow: 0 4px 22px #4ec6ff18;
+      max-width: 440px;
+      padding: 2.6em 2em;
       color: var(--white);
-      margin-top: 1.2em;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.3em;
     }
     .contact-form label {
-      display: block;
-      margin-bottom: .7em;
       font-weight: 700;
       color: var(--blue);
-      font-size: 1.04rem;
+      font-size: 1.12rem;
     }
     .contact-form input,
     .contact-form textarea {
@@ -252,9 +557,9 @@
       border: 1px solid #22262d;
       border-radius: 0.6em;
       color: var(--white);
-      font-size: 1.07rem;
-      padding: .77em 1em;
-      margin-bottom: 1.3em;
+      font-size: 1.09rem;
+      padding: .84em 1em;
+      margin-bottom: 0.4em;
       font-family: inherit;
       transition: border .16s;
       outline: none;
@@ -266,129 +571,47 @@
     .contact-btn {
       background: var(--blue);
       color: var(--black);
-      font-weight: 700;
+      font-weight: 800;
       border: none;
-      padding: 0.8em 2em;
+      padding: 1em 2.1em;
       border-radius: 2em;
       cursor: pointer;
-      font-size: 1.09rem;
-      transition: background .18s;
+      font-size: 1.15rem;
+      transition: background .18s, color .18s, box-shadow .15s;
       box-shadow: 0 2px 12px #4ec6ff23;
+      margin-top: 0.9em;
     }
     .contact-btn:hover {
       background: var(--white);
       color: var(--blue);
       box-shadow: 0 6px 24px #4ec6ff2a;
     }
-    /* Responsive */
     @media (max-width: 900px) {
-      .section {padding: 3rem 4vw;}
+      .portfolio-gallery { grid-template-columns: 1fr; }
+      .about-wrap, .difference-wrap { flex-direction: column; gap: 2.5rem; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .testimonials-section, .difference-section, .features-section,
+      .portfolio-section, .services-section, .contact-section, .about-wrap, .pricing-section {
+        padding-left: 2vw; padding-right: 2vw;
+      }
     }
     @media (max-width: 600px) {
-      .section {padding: 2rem 2vw;}
-      .hero-headline {font-size: 1.45rem;}
+      .portfolio-gallery { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: 1fr; }
+      .services-list { flex-direction: column; gap: 1.2rem; }
+      .section-title, .portfolio-title { font-size: 1.25rem;}
+      .hero-headline { font-size: 1.6rem;}
+      .about-title { font-size: 1.3rem; }
+      .about-glass { padding: 1.5em 1em; }
+      .feature-card, .portfolio-card, .service-card, .difference-card, .testimonial-card, .pricing-card {
+        padding: 1.3em 1em;
+      }
     }
-
-
-/* --- BIM LABS Animated Logo Styles --- */
-.logo-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 2.5rem auto 2.5rem auto;
-  width: 100%;
-}
-
-.letters {
-  display: flex;
-  align-items: center;
-}
-
-/* Animated letters, each span is a character. */
-.letters span {
-  font-size: 64px;
-  font-weight: 700;
-  opacity: 0;
-  transform: translateY(20px);
-  display: inline-block;
-  margin-right: 2px;
-  animation: slideFade 0.8s forwards ease-out;
-  font-family: 'Montserrat', Arial, sans-serif;
-  letter-spacing: 0.03em;
-}
-/* BIM in off‑white, LABS in light blue */
-.letters span:nth-child(-n+3) {
-  color: #E6E6E6;
-}
-.letters span:nth-child(n+4) {
-  color: #4EC6FF;
-}
-.letters span:nth-child(3) { margin-right: 16px; }
-/* Staggered animation delays */
-.letters span:nth-child(1) { animation-delay: 0.18s; }
-.letters span:nth-child(2) { animation-delay: 0.32s; }
-.letters span:nth-child(3) { animation-delay: 0.44s; }
-.letters span:nth-child(4) { animation-delay: 0.56s; }
-.letters span:nth-child(5) { animation-delay: 0.68s; }
-.letters span:nth-child(6) { animation-delay: 0.80s; }
-.letters span:nth-child(7) { animation-delay: 0.92s; }
-
-@keyframes slideFade {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Symbol styles */
-.symbol {
-  width: 72px;
-  height: 72px;
-  margin-left: 28px;
-  display: inline-block;
-  vertical-align: middle;
-}
-.symbol path.outline {
-  fill: none;
-  stroke: #4EC6FF;
-  stroke-width: 6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: var(--length);
-  stroke-dashoffset: var(--length);
-  animation: draw 1.6s forwards ease-out;
-}
-@keyframes draw {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-.symbol path.fill-shape {
-  fill: #4EC6FF;
-  opacity: 0;
-  animation: fadeInFill 0.5s forwards ease-out;
-  animation-delay: 1.6s;
-}
-@keyframes fadeInFill {
-  to {
-    opacity: 1;
-  }
-}
-
-/* Responsive: logo scales down on mobile */
-@media (max-width: 700px) {
-  .logo-container { margin: 1.2rem auto 1.2rem auto; }
-  .letters span { font-size: 36px; }
-  .symbol { width: 36px; height: 36px; margin-left: 10px;}
-}
-
-    
   </style>
 </head>
 <body>
-
- <!-- BIM Labs Animated Logo -->
-  <div class="logo-container" style="justify-content:center;margin:2.5rem auto 1.5rem auto; display:flex;">
+  <!-- Animated Logo -->
+  <div class="logo-container">
     <div class="letters">
       <span>B</span><span>I</span><span>M</span><span>L</span><span>A</span><span>B</span><span>S</span>
     </div>
@@ -398,211 +621,171 @@
     </svg>
   </div>
 
-  
   <!-- HERO -->
-  <section class="hero section" data-aos="fade-up">
-    <div class="hero-headline">
-      Building <span class="hero-highlight">Modern</span> Digital Experiences.<br>
-      <span style="color:#6EC1E4;">Minimal. Bold. Unforgettable.</span>
+  <section class="hero" data-aos="fade-down">
+    <div class="hero-headline" data-aos="fade-right">
+      Building <span style="color:#4EC6FF;">Modern</span> Digital Experiences.
+      <div class="hero-underline"></div>
     </div>
-    <div class="hero-sub">
+    <div class="hero-sub" data-aos="fade-left" data-aos-delay="300">
       Elevate your brand with a website and client portal so clean and modern, your competition will wonder what hit them.
     </div>
-    <a href="#contact" class="hero-btn">Get Started</a>
+    <a href="#contact" class="hero-btn" data-aos="zoom-in" data-aos-delay="600">Get Started</a>
   </section>
+
   <!-- ABOUT -->
-  <section class="section" id="about" data-aos="fade-up">
-    <div class="section-title">About</div>
-    <div class="about-text">
-      We craft digital spaces for brands that refuse to blend in. Our philosophy is simple: less is more, and quality is everything. From startups to established names, we build with the details in mind—design, speed, and seamless CRM integration. The result? A site you’ll love, and customers will trust.
+  <section class="about-wrap" id="about" data-aos="fade-up">
+    <div class="about-glass" data-aos="fade-right">
+      <div class="about-title">Our Philosophy</div>
+      <div class="about-text">
+        We craft digital spaces for brands that refuse to blend in. Our belief: <b>less is more, and quality is everything</b>. Every detail—from typography to speed to seamless CRM integration—is obsessively considered. You'll love your site. Your customers will trust it.
+      </div>
     </div>
+    <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=500&q=80" class="about-img" alt="BIM Labs Studio" data-aos="fade-left" />
   </section>
+
   <!-- FEATURES -->
-  <section class="section" id="features" data-aos="fade-up">
-    <div class="section-title">Features</div>
+  <section class="features-section" id="features">
+    <div class="section-title" data-aos="fade-up">Features</div>
     <div class="features-grid">
-      <div class="feature-card">
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="feature-icon">📱</div>
         <div class="feature-title">Ultra-Responsive</div>
         Perfect on every device—no pinching, no squinting.
       </div>
-      <div class="feature-card">
-        <div class="feature-title">Custom CRM Integration</div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="feature-icon">🔗</div>
+        <div class="feature-title">CRM Integration</div>
         Seamlessly manage your clients, leads, and more—right from your site.
       </div>
-      <div class="feature-card">
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="feature-icon">🎨</div>
         <div class="feature-title">Minimal UI</div>
         No clutter, no distractions—just pure, focused design.
       </div>
-      <div class="feature-card">
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+        <div class="feature-icon">⚡</div>
         <div class="feature-title">Lightning Fast</div>
         Clean code and best practices for peak speed and SEO.
       </div>
     </div>
   </section>
+
   <!-- PORTFOLIO -->
-  <section class="section" id="portfolio" data-aos="fade-up">
-    <div class="section-title">Portfolio</div>
-    <div class="portfolio-grid">
-      <div class="portfolio-card">
-        <div class="portfolio-title">Skyline Health</div>
-        Wellness clinic site, bold minimalist layout, with appointment booking CRM.
+  <section class="portfolio-section" id="portfolio">
+    <div class="portfolio-title" data-aos="fade-up">Selected Portfolio</div>
+    <div class="portfolio-gallery">
+      <div class="portfolio-card" data-aos="zoom-in-up">
+        <div class="portfolio-label">Featured</div>
+        <img src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=500&q=80" alt="Skyline Health" />
+        <div class="portfolio-desc">Skyline Health: Wellness clinic site, bold minimalist layout, appointment booking CRM.</div>
       </div>
-      <div class="portfolio-card">
-        <div class="portfolio-title">BlueMark Studios</div>
-        Creative agency portal, light blue on black, client dashboard for project management.
+      <div class="portfolio-card" data-aos="zoom-in-up" data-aos-delay="100">
+        <div class="portfolio-label">Agency</div>
+        <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=500&q=80" alt="BlueMark Studios" />
+        <div class="portfolio-desc">BlueMark Studios: Creative agency portal, light blue on black, client dashboard for project management.</div>
       </div>
-      <div class="portfolio-card">
-        <div class="portfolio-title">Urban Kids Academy</div>
-        Clean, modern look for a school, parent CRM portal and event scheduling.
+      <div class="portfolio-card" data-aos="zoom-in-up" data-aos-delay="200">
+        <div class="portfolio-label">Education</div>
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=500&q=80" alt="Urban Kids Academy" />
+        <div class="portfolio-desc">Urban Kids Academy: Clean, modern look for a school, parent CRM portal and event scheduling.</div>
       </div>
     </div>
   </section>
+
   <!-- SERVICES -->
-  <section class="section" id="services" data-aos="fade-up">
+  <section class="services-section" id="services">
+    <div class="section-title" data-aos="fade-up">Services</div>
     <div class="services-list">
-  <div class="service-item">
-    <a href="website-builds.html" style="color:inherit;text-decoration:none;">
-      Full Website Builds
-    </a>
-  </div>
-  <div class="service-item">
-    <a href="client-portals.html" style="color:inherit;text-decoration:none;">
-      Custom Client Portals
-    </a>
-  </div>
-  <div class="service-item">
-    <a href="crm.html" style="color:inherit;text-decoration:none;">
-      CRM Integration
-    </a>
-  </div>
-  <div class="service-item">
-    <a href="maintenance.html" style="color:inherit;text-decoration:none;">
-      Maintenance & Hosting
-    </a>
-  </div>
-  <div class="service-item">
-    <a href="branding-and-copywriting.html" style="color:inherit;text-decoration:none;">
-      Branding & Copywriting
-    </a>
-  </div>
-  <div class="service-item">
-    <a href="speed-optimization.html" style="color:inherit;text-decoration:none;">
-      Speed Optimization
-    </a>
-  </div>
-</div>
-
-    <!-- THE BIM LABS DIFFERENCE SECTION -->
-<section class="section" id="difference" data-aos="fade-up">
-  <div class="section-title">Why BIM Labs Is <span style="color:#4EC6FF;">Years Ahead</span></div>
-  <div style="display:flex;flex-wrap:wrap;gap:2.5rem 4vw;justify-content:space-between;">
-    <!-- TYPICAL AGENCY -->
-    <div style="flex:1 1 330px; background:#15171b; border-radius:1.3em; padding:2.6em 2.1em; box-shadow:0 3px 24px #0002; border:1.5px solid #1e232e; max-width:420px;">
-      <div style="font-size:1.38rem;font-weight:800;color:#fff;margin-bottom:1em;">
-        <span style="opacity:.7;">A Typical Agency</span>
+      <div class="service-card" data-aos="fade-right" data-aos-delay="100">
+        <div class="service-title">Full Website Builds</div>
+        Cutting-edge sites for every brand. <a href="website-builds.html">Learn More</a>
       </div>
-      <ul style="list-style:none;padding:0;margin:0 0 1.2em 0;line-height:1.7;font-size:1.08rem;opacity:.85;">
-        <li><b>Website:</b> $2,500 – $8,000</li>
-        <li><b>CRM:</b> $100–$350/mo (extra, often basic)</li>
-        <li><b>Design:</b> Template or builder, generic look</li>
-        <li><b>Process:</b> Weeks of back and forth, hidden fees</li>
-        <li><b>Support:</b> Email-only, slow</li>
-      </ul>
-      <div style="margin-top:1.8em;border-top:1px solid #26272a;padding-top:1.2em;font-size:1.16rem;opacity:.65;">
-        <span style="background:#22242a;padding:0.45em 1em;border-radius:1.4em;color:#fff;">Total: $3,000+ and ongoing fees</span>
+      <div class="service-card" data-aos="fade-right" data-aos-delay="200">
+        <div class="service-title">Custom Client Portals</div>
+        Make onboarding, communication, and support seamless.<a href="client-portals.html">Learn More</a>
+      </div>
+      <div class="service-card" data-aos="fade-right" data-aos-delay="300">
+        <div class="service-title">CRM Integration</div>
+        Automate your business with a bespoke CRM.<a href="crm.html">Learn More</a>
+      </div>
+      <div class="service-card" data-aos="fade-right" data-aos-delay="400">
+        <div class="service-title">Maintenance & Hosting</div>
+        Secure, worry-free, lightning fast.<a href="maintenance.html">Learn More</a>
+      </div>
+      <div class="service-card" data-aos="fade-right" data-aos-delay="500">
+        <div class="service-title">Branding & Copywriting</div>
+        Your story, your way, everywhere.<a href="branding-and-copywriting.html">Learn More</a>
+      </div>
+      <div class="service-card" data-aos="fade-right" data-aos-delay="600">
+        <div class="service-title">Speed Optimization</div>
+        The fastest site in your space, guaranteed.<a href="speed-optimization.html">Learn More</a>
       </div>
     </div>
-    <!-- BIM LABS OFFER -->
-    <div style="flex:1 1 330px; background:#10151a; border-radius:1.3em; padding:2.6em 2.1em; box-shadow:0 6px 36px #4ec6ff18; border:1.5px solid #4EC6FF; max-width:420px;">
-      <div style="font-size:1.38rem;font-weight:900;color:#4EC6FF;margin-bottom:1em;">
-        BIM Labs
-      </div>
-      <ul style="list-style:none;padding:0;margin:0 0 1.2em 0;line-height:1.7;font-size:1.11rem;">
-        <li><b>Luxury Website:</b> Included</li>
-        <li><b>Custom CRM:</b> Included <span style="color:#4EC6FF;font-size:1em;">(yours forever)</span></li>
-        <li><b>Design:</b> Handcrafted, zero templates</li>
-        <li><b>Process:</b> White-glove onboarding, lightning fast</li>
-        <li><b>Support:</b> VIP chat, video, and phone</li>
-      </ul>
-      <div style="margin-top:1.8em;border-top:1px solid #243442;padding-top:1.2em;font-size:1.22rem;">
-        <span style="background:#4EC6FF;padding:0.48em 1.2em;border-radius:1.4em;color:#101014;font-weight:800;">Total: $1,000 (all-in)</span>
-      </div>
-    </div>
-  </div>
-  <!-- Price Comparison Table -->
-  <div style="margin-top:3.5rem;max-width:760px;">
-    <table style="width:100%;border-collapse:collapse;font-size:1.13rem;margin:0 auto;">
-      <thead>
-        <tr style="background:#16191d;">
-          <th style="text-align:left;padding:1em 0.5em 1em 0;color:#4EC6FF;font-weight:900;">Service</th>
-          <th style="text-align:center;padding:1em 0.5em;color:#fff;font-weight:700;">Typical Agency</th>
-          <th style="text-align:center;padding:1em 0.5em;color:#4EC6FF;font-weight:900;">BIM Labs</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style="border-top:1.5px solid #1e232e;">
-          <td style="padding:.9em 0;">Website Build</td>
-          <td style="text-align:center;opacity:.75;">$3,000+</td>
-          <td style="text-align:center;font-weight:800;color:#4EC6FF;">Included</td>
-        </tr>
-        <tr style="border-top:1.5px solid #1e232e;">
-          <td style="padding:.9em 0;">Custom CRM</td>
-          <td style="text-align:center;opacity:.75;">$150/mo</td>
-          <td style="text-align:center;font-weight:800;color:#4EC6FF;">Included</td>
-        </tr>
-        <tr style="border-top:1.5px solid #1e232e;">
-          <td style="padding:.9em 0;">Support</td>
-          <td style="text-align:center;opacity:.75;">Slow / Extra</td>
-          <td style="text-align:center;font-weight:800;color:#4EC6FF;">VIP / Included</td>
-        </tr>
-        <tr style="border-top:1.5px solid #1e232e;">
-          <td style="padding:.9em 0;">Ownership</td>
-          <td style="text-align:center;opacity:.75;">Never yours</td>
-          <td style="text-align:center;font-weight:800;color:#4EC6FF;">100% Yours</td>
-        </tr>
-        <tr style="border-top:1.5px solid #1e232e;">
-          <td style="padding:.9em 0;">Hidden Fees</td>
-          <td style="text-align:center;opacity:.75;">Always</td>
-          <td style="text-align:center;font-weight:800;color:#4EC6FF;">Never</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-
   </section>
+
+  <!-- THE BIM LABS DIFFERENCE -->
+  <section class="difference-section" id="difference">
+    <div class="section-title" data-aos="fade-up">Why BIM Labs Is <span style="color:#4EC6FF;">Years Ahead</span></div>
+    <div class="difference-wrap">
+      <div class="difference-card" data-aos="fade-right">
+        <div class="difference-title">A Typical Agency</div>
+        <ul>
+          <li><b>Website:</b> $2,500 – $8,000</li>
+          <li><b>CRM:</b> $100–$350/mo (extra, often basic)</li>
+          <li><b>Design:</b> Template or builder, generic look</li>
+          <li><b>Process:</b> Weeks of back and forth, hidden fees</li>
+          <li><b>Support:</b> Email-only, slow</li>
+        </ul>
+        <div class="total">Total: $3,000+ and ongoing fees</div>
+      </div>
+      <div class="difference-card difference-card--bim" data-aos="fade-left">
+        <div class="difference-title">BIM Labs</div>
+        <ul>
+          <li><b>Luxury Website:</b> Included</li>
+          <li><b>Custom CRM:</b> Included <span style="color:#4EC6FF;font-size:1em;">(yours forever)</span></li>
+          <li><b>Design:</b> Handcrafted, zero templates</li>
+          <li><b>Process:</b> White-glove onboarding, lightning fast</li>
+          <li><b>Support:</b> VIP chat, video, and phone</li>
+        </ul>
+        <div class="total">Total: $1,000 (all-in)</div>
+      </div>
+    </div>
+  </section>
+
   <!-- TESTIMONIALS -->
-  <section class="section" id="testimonials" data-aos="fade-up">
-    <div class="section-title">Testimonials</div>
+  <section class="testimonials-section" id="testimonials">
+    <div class="section-title" data-aos="fade-up">Testimonials</div>
     <div class="testimonial-grid">
-      <div class="testimonial-card">
+      <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
         “Our new site is so clean and fast—clients notice instantly. Best investment we've made.”
         <div class="testimonial-author">— Olivia S., Clinic Owner</div>
       </div>
-      <div class="testimonial-card">
+      <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
         “We booked more demos in two weeks than the last two months. Minimal works.”
         <div class="testimonial-author">— Marcus D., Agency Director</div>
       </div>
-      <div class="testimonial-card">
+      <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
         “Managing families and events is a breeze now. The CRM is next-level.”
         <div class="testimonial-author">— Jamie L., School Admin</div>
       </div>
     </div>
   </section>
+
   <!-- PRICING -->
-  <section class="section" id="pricing" data-aos="fade-up">
-    <div class="section-title">Pricing</div>
+  <section class="pricing-section" id="pricing">
+    <div class="section-title" data-aos="fade-up">Pricing</div>
     <div class="pricing-grid">
-      <div class="pricing-card">
+      <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
         <div class="price">$1,000</div>
         Essentials<br>
         — Premium Website<br>
         — Mobile Responsive<br>
         — Basic CRM<br>
         — 10-day Delivery
+        <span class="best-value">Best Value</span>
       </div>
-      <div class="pricing-card">
+      <div class="pricing-card" data-aos="fade-up" data-aos-delay="200">
         <div class="price">$1,750</div>
         Advanced<br>
         — Full CRM Suite<br>
@@ -610,7 +793,7 @@
         — 2 Revision Rounds<br>
         — Priority Support
       </div>
-      <div class="pricing-card">
+      <div class="pricing-card" data-aos="fade-up" data-aos-delay="300">
         <div class="price">Custom</div>
         Ultimate<br>
         — Everything Above<br>
@@ -620,10 +803,11 @@
       </div>
     </div>
   </section>
+
   <!-- CONTACT -->
-  <section class="section" id="contact" data-aos="fade-up">
-    <div class="section-title">Contact</div>
-    <form class="contact-form">
+  <section class="contact-section" id="contact">
+    <div class="section-title" data-aos="fade-up">Contact</div>
+    <form class="contact-form" data-aos="fade-up" data-aos-delay="300">
       <label for="name">Name</label>
       <input id="name" type="text" required>
       <label for="email">Email</label>
@@ -633,6 +817,7 @@
       <button class="contact-btn" type="submit">Send</button>
     </form>
   </section>
+
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
     AOS.init({
@@ -640,13 +825,12 @@
       once: true,
       easing: "ease-in-out-cubic",
     });
+    // Animated logo path script
+    const symPath = document.getElementById('symbolPath');
+    if(symPath){
+      const length = symPath.getTotalLength();
+      symPath.style.setProperty('--length', length);
+    }
   </script>
-  <script>
-  // Animated logo path script
-  const symPath = document.getElementById('symbolPath');
-  const length = symPath.getTotalLength();
-  symPath.style.setProperty('--length', length);
-</script>
-
 </body>
 </html>
