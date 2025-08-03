@@ -291,6 +291,19 @@
   </style>
 </head>
 <body>
+
+ <!-- BIM Labs Animated Logo -->
+  <div class="logo-container" style="justify-content:center;margin:2.5rem auto 1.5rem auto; display:flex;">
+    <div class="letters">
+      <span>B</span><span>I</span><span>M</span><span>L</span><span>A</span><span>B</span><span>S</span>
+    </div>
+    <svg class="symbol" viewBox="0 0 100 100">
+      <path id="symbolPath" class="outline" d="M50 10 A40 40 0 1 1 50 90 L80 90" />
+      <path class="fill-shape" d="M50 30 A20 20 0 1 1 50 70 Z" />
+    </svg>
+  </div>
+
+  
   <!-- HERO -->
   <section class="hero section" data-aos="fade-up">
     <div class="hero-headline">
@@ -454,5 +467,12 @@
       easing: "ease-in-out-cubic",
     });
   </script>
+  <script>
+  // Animated logo path script
+  const symPath = document.getElementById('symbolPath');
+  const length = symPath.getTotalLength();
+  symPath.style.setProperty('--length', length);
+</script>
+
 </body>
 </html>
