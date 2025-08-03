@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ultra Luxury Web Agency</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700;900&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+    :root {
+      --black: #101014;
+      --silver: #d1d5db;
+      --white: #fff;
+      --red: #ff2222;
+      --glass: rgba(35,35,40,0.7);
+      --shadow: 0 12px 48px #000a, 0 2px 8px #ff222222;
+    }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      letter-spacing: 0.01em;
+      overflow-x: hidden;
+    }
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: linear-gradient(135deg, #151515 60%, #222 100%);
+    }
+    .hero-card {
+      background: var(--glass);
+      box-shadow: var(--shadow);
+      border-radius: 2.5rem;
+      padding: 3.5rem 4rem;
+      max-width: 600px;
+      border: 2px solid var(--silver);
+      backdrop-filter: blur(18px);
+      text-align: center;
+      animation: fadeInCard 1.5s cubic-bezier(.4,0,.2,1);
+    }
+    @keyframes fadeInCard {
+      0% { opacity: 0; transform: scale(.95) translateY(60px);}
+      100% { opacity: 1; transform: scale(1) translateY(0);}
+    }
+    .hero-logo {
+      width: 90px; height: 90px;
+      border-radius: 50%;
+      box-shadow: 0 0 24px var(--red), 0 2px 8px var(--silver);
+      margin-bottom: 22px;
+      background: linear-gradient(145deg, #fff3, #2229);
+      animation: logoPopIn .8s 0.3s cubic-bezier(.4,0,.2,1) backwards;
+    }
+    @keyframes logoPopIn {
+      0% {opacity: 0; transform: scale(0.7) rotate(-18deg);}
+      100% {opacity: 1; transform: scale(1) rotate(0);}
+    }
+    .headline {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--silver);
+      letter-spacing: 0.03em;
+      margin-bottom: 18px;
+      position: relative;
+      display: inline-block;
+      line-height: 1.12;
+      text-shadow: 0 3px 16px #000a;
+    }
+    .headline:after {
+      content: '';
+      display: block;
+      height: 4px;
+      width: 50%;
+      margin: 15px auto 0 auto;
+      background: linear-gradient(90deg, var(--red), transparent 70%);
+      border-radius: 3px;
+      animation: slideInUnderline .9s .6s cubic-bezier(.4,0,.2,1) backwards;
+    }
+    @keyframes slideInUnderline {
+      0% {width: 0;}
+      100% {width: 50%;}
+    }
+    .subheadline {
+      font-size: 1.22rem;
+      color: var(--white);
+      font-weight: 400;
+      opacity: .92;
+      margin-bottom: 32px;
+      letter-spacing: 0.02em;
+    }
+    .cta-btn {
+      display: inline-block;
+      padding: 0.8em 2.5em;
+      font-size: 1.13rem;
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      border-radius: 2rem;
+      font-weight: 700;
+      box-shadow: 0 2px 16px #ff222236;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: transform .2s cubic-bezier(.6,0,.2,1), box-shadow .2s;
+      z-index: 1;
+    }
+    .cta-btn:after {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; width: 100%; height: 100%;
+      background: linear-gradient(90deg, #fff2, transparent 75%);
+      opacity: 0;
+      transition: opacity .2s;
+      z-index: 2;
+      border-radius: 2rem;
+    }
+    .cta-btn:hover {
+      transform: scale(1.045);
+      box-shadow: 0 8px 30px #ff222258, 0 2px 12px var(--silver);
+    }
+    .cta-btn:hover:after {
+      opacity: .26;
+    }
+    /* Add AOS fade-ups and slides for next sections */
+    .section {
+      padding: 6rem 2.5vw 4rem 2.5vw;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      margin-bottom: 2rem;
+      color: var(--silver);
+      text-shadow: 0 2px 8px #0006;
+    }
+    /* Portfolio Cards */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+    }
+    .portfolio-card {
+      background: linear-gradient(120deg, #16161c 75%, #3e3e43 100%);
+      border-radius: 1.5rem;
+      box-shadow: 0 6px 32px #000c, 0 1px 4px #ff222244;
+      padding: 2rem;
+      border: 1.5px solid var(--silver);
+      transition: transform .25s cubic-bezier(.6,0,.2,1), box-shadow .2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .portfolio-card:hover {
+      transform: scale(1.04) rotate(-1deg);
+      box-shadow: 0 16px 42px #ff222228, 0 2px 18px var(--silver);
+      border-color: var(--red);
+    }
+    .portfolio-title {
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin-bottom: 0.5em;
+    }
+    .portfolio-desc {
+      color: #e2e2e2;
+      opacity: .85;
+      font-size: 1.02rem;
+    }
+    /* Responsive */
+    @media (max-width: 700px) {
+      .hero-card { padding: 2rem 1rem; }
+      .headline { font-size: 1.4rem;}
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="hero-card" data-aos="zoom-in">
+      <div class="hero-logo" data-aos="fade-down" data-aos-delay="200">
+        <!-- Your SVG/logo here -->
+      </div>
+      <div class="headline" data-aos="fade-up" data-aos-delay="400">
+        Digital Experiences for the Elite
+      </div>
+      <div class="subheadline" data-aos="fade-up" data-aos-delay="700">
+        Bespoke websites & client portals that set the new standard.
+      </div>
+      <a href="#contact" class="cta-btn" data-aos="fade-up" data-aos-delay="900">
+        Book Your Private Demo
+      </a>
+    </div>
+  </section>
+  <section class="section" id="portfolio">
+    <div class="section-title" data-aos="fade-up">
+      Signature Work
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="portfolio-title">Black Diamond Realty</div>
+        <div class="portfolio-desc">
+          Ultra-luxury real estate platform with high-gloss visual identity, live chat, and exclusive member CRM.
+        </div>
+      </div>
+      <div class="portfolio-card" data-aos="fade-up" data-aos-delay="250">
+        <div class="portfolio-title">Redline Performance Auto</div>
+        <div class="portfolio-desc">
+          Performance-focused automotive site featuring real-time inventory, glass dashboard, and stunning video hero.
+        </div>
+      </div>
+      <div class="portfolio-card" data-aos="fade-up" data-aos-delay="400">
+        <div class="portfolio-title">Virtue Private Consulting</div>
+        <div class="portfolio-desc">
+          Minimalist, silver-themed consulting site with secure client dashboard and parallax effect.
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- More sections: About, Services, Testimonials, Contact ... -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 900,
+      once: true,
+      easing: "ease-in-out-cubic",
+    });
+  </script>
+</body>
+</html>
