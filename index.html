@@ -3,230 +3,429 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ultra Luxury Web Agency</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700;900&display=swap" rel="stylesheet">
+  <title>Minimal Luxury Web Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <style>
     :root {
       --black: #101014;
-      --silver: #d1d5db;
+      --blue: #4EC6FF;
+      --blue-light: #6EC1E4;
       --white: #fff;
-      --red: #ff2222;
-      --glass: rgba(35,35,40,0.7);
-      --shadow: 0 12px 48px #000a, 0 2px 8px #ff222222;
+      --gray: #F5F6F8;
+      --gray-dark: #C8D0D8;
     }
     body {
-      background: var(--black);
-      color: var(--white);
-      font-family: 'Montserrat', Arial, sans-serif;
       margin: 0;
       padding: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: var(--black);
+      color: var(--white);
       min-height: 100vh;
       letter-spacing: 0.01em;
       overflow-x: hidden;
     }
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      background: linear-gradient(135deg, #151515 60%, #222 100%);
-    }
-    .hero-card {
-      background: var(--glass);
-      box-shadow: var(--shadow);
-      border-radius: 2.5rem;
-      padding: 3.5rem 4rem;
-      max-width: 600px;
-      border: 2px solid var(--silver);
-      backdrop-filter: blur(18px);
-      text-align: center;
-      animation: fadeInCard 1.5s cubic-bezier(.4,0,.2,1);
-    }
-    @keyframes fadeInCard {
-      0% { opacity: 0; transform: scale(.95) translateY(60px);}
-      100% { opacity: 1; transform: scale(1) translateY(0);}
-    }
-    .hero-logo {
-      width: 90px; height: 90px;
-      border-radius: 50%;
-      box-shadow: 0 0 24px var(--red), 0 2px 8px var(--silver);
-      margin-bottom: 22px;
-      background: linear-gradient(145deg, #fff3, #2229);
-      animation: logoPopIn .8s 0.3s cubic-bezier(.4,0,.2,1) backwards;
-    }
-    @keyframes logoPopIn {
-      0% {opacity: 0; transform: scale(0.7) rotate(-18deg);}
-      100% {opacity: 1; transform: scale(1) rotate(0);}
-    }
-    .headline {
-      font-size: 2.5rem;
-      font-weight: 900;
-      color: var(--silver);
-      letter-spacing: 0.03em;
-      margin-bottom: 18px;
-      position: relative;
-      display: inline-block;
-      line-height: 1.12;
-      text-shadow: 0 3px 16px #000a;
-    }
-    .headline:after {
-      content: '';
-      display: block;
-      height: 4px;
-      width: 50%;
-      margin: 15px auto 0 auto;
-      background: linear-gradient(90deg, var(--red), transparent 70%);
-      border-radius: 3px;
-      animation: slideInUnderline .9s .6s cubic-bezier(.4,0,.2,1) backwards;
-    }
-    @keyframes slideInUnderline {
-      0% {width: 0;}
-      100% {width: 50%;}
-    }
-    .subheadline {
-      font-size: 1.22rem;
-      color: var(--white);
-      font-weight: 400;
-      opacity: .92;
-      margin-bottom: 32px;
-      letter-spacing: 0.02em;
-    }
-    .cta-btn {
-      display: inline-block;
-      padding: 0.8em 2.5em;
-      font-size: 1.13rem;
-      background: var(--red);
-      color: var(--white);
-      border: none;
-      border-radius: 2rem;
-      font-weight: 700;
-      box-shadow: 0 2px 16px #ff222236;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-      transition: transform .2s cubic-bezier(.6,0,.2,1), box-shadow .2s;
-      z-index: 1;
-    }
-    .cta-btn:after {
-      content: '';
-      position: absolute;
-      left: 0; top: 0; width: 100%; height: 100%;
-      background: linear-gradient(90deg, #fff2, transparent 75%);
-      opacity: 0;
-      transition: opacity .2s;
-      z-index: 2;
-      border-radius: 2rem;
-    }
-    .cta-btn:hover {
-      transform: scale(1.045);
-      box-shadow: 0 8px 30px #ff222258, 0 2px 12px var(--silver);
-    }
-    .cta-btn:hover:after {
-      opacity: .26;
-    }
-    /* Add AOS fade-ups and slides for next sections */
+    a { color: var(--blue); text-decoration: none; transition: color .18s;}
+    a:hover { color: var(--blue-light); }
     .section {
-      padding: 6rem 2.5vw 4rem 2.5vw;
-      max-width: 1240px;
+      max-width: 1120px;
       margin: 0 auto;
+      padding: 5rem 5vw 3.5rem 5vw;
+      border-bottom: 1px solid #1e232e;
+    }
+    .section:last-child {
+      border-bottom: none;
+      padding-bottom: 6rem;
     }
     .section-title {
-      font-size: 2rem;
-      font-weight: 800;
-      letter-spacing: 0.05em;
-      margin-bottom: 2rem;
-      color: var(--silver);
-      text-shadow: 0 2px 8px #0006;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--blue);
+      margin-bottom: 1.7rem;
+      letter-spacing: 0.04em;
+      line-height: 1.1;
     }
-    /* Portfolio Cards */
+    /* HERO */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      min-height: 84vh;
+      padding-top: 6vh;
+      border-bottom: 1px solid #22282f;
+      background: var(--black);
+    }
+    .hero-headline {
+      font-size: 2.7rem;
+      font-weight: 900;
+      line-height: 1.09;
+      color: var(--white);
+      margin-bottom: 0.8em;
+      max-width: 660px;
+      letter-spacing: 0.02em;
+    }
+    .hero-highlight {
+      color: var(--blue);
+    }
+    .hero-sub {
+      font-size: 1.23rem;
+      font-weight: 400;
+      opacity: 0.86;
+      margin-bottom: 2.3em;
+      max-width: 560px;
+    }
+    .hero-btn {
+      padding: 0.9em 2.6em;
+      border-radius: 2em;
+      font-weight: 700;
+      font-size: 1.09rem;
+      background: var(--blue);
+      color: var(--black);
+      border: none;
+      box-shadow: 0 2px 16px #4ec6ff23;
+      transition: background .15s, box-shadow .18s, color .15s;
+      cursor: pointer;
+    }
+    .hero-btn:hover {
+      background: var(--white);
+      color: var(--blue);
+      box-shadow: 0 4px 32px #4ec6ff45;
+    }
+    /* ABOUT */
+    .about-text {
+      font-size: 1.14rem;
+      opacity: .95;
+      line-height: 1.7;
+      max-width: 680px;
+      margin-bottom: 1.7em;
+    }
+    /* FEATURES */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .feature-card {
+      background: #17191c;
+      border-radius: 1.3em;
+      padding: 2.2em 1.6em;
+      box-shadow: 0 3px 24px #4ec6ff0a;
+      border: 1.5px solid #212226;
+      color: var(--white);
+      text-align: left;
+      transition: border .18s, box-shadow .19s;
+      min-height: 180px;
+    }
+    .feature-card:hover {
+      border-color: var(--blue);
+      box-shadow: 0 8px 36px #4ec6ff23;
+    }
+    .feature-title {
+      font-size: 1.17rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 0.4em;
+    }
+    /* PORTFOLIO */
     .portfolio-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
     }
     .portfolio-card {
-      background: linear-gradient(120deg, #16161c 75%, #3e3e43 100%);
-      border-radius: 1.5rem;
-      box-shadow: 0 6px 32px #000c, 0 1px 4px #ff222244;
-      padding: 2rem;
-      border: 1.5px solid var(--silver);
-      transition: transform .25s cubic-bezier(.6,0,.2,1), box-shadow .2s;
-      position: relative;
-      overflow: hidden;
+      background: #191c21;
+      border-radius: 1.1em;
+      padding: 1.6em 1.4em 1.3em 1.4em;
+      border: 1.5px solid #1e232e;
+      transition: border .18s, box-shadow .2s;
+      box-shadow: 0 2px 18px #4ec6ff16;
     }
     .portfolio-card:hover {
-      transform: scale(1.04) rotate(-1deg);
-      box-shadow: 0 16px 42px #ff222228, 0 2px 18px var(--silver);
-      border-color: var(--red);
+      border-color: var(--blue);
+      box-shadow: 0 10px 32px #4ec6ff28;
     }
     .portfolio-title {
-      color: var(--white);
+      color: var(--blue);
       font-weight: 700;
-      font-size: 1.3rem;
-      margin-bottom: 0.5em;
+      font-size: 1.09rem;
+      margin-bottom: .45em;
     }
-    .portfolio-desc {
-      color: #e2e2e2;
-      opacity: .85;
-      font-size: 1.02rem;
+    /* SERVICES */
+    .services-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1.8rem;
+      margin-top: 2rem;
+    }
+    .service-item {
+      background: #15171b;
+      border-radius: 1.1em;
+      border: 1.5px solid #1e232e;
+      padding: 1.6em 1.2em;
+      font-size: 1.04rem;
+      color: var(--white);
+      transition: border .16s, box-shadow .2s;
+    }
+    .service-item:hover {
+      border-color: var(--blue);
+      box-shadow: 0 6px 26px #4ec6ff23;
+    }
+    /* TESTIMONIALS */
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.1rem;
+      margin-top: 2rem;
+    }
+    .testimonial-card {
+      background: #16191d;
+      border-radius: 1.1em;
+      padding: 2.1em 1.4em 1.3em 1.4em;
+      color: var(--white);
+      border: 1.5px solid #1e232e;
+      box-shadow: 0 2px 12px #4ec6ff18;
+      position: relative;
+      font-size: 1.05rem;
+      min-height: 130px;
+    }
+    .testimonial-author {
+      margin-top: 1.3em;
+      font-weight: 700;
+      color: var(--blue-light);
+      font-size: 1.01rem;
+    }
+    /* PRICING */
+    .pricing-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.1rem;
+      margin-top: 2.4rem;
+      justify-content: flex-start;
+    }
+    .pricing-card {
+      background: #181b21;
+      border-radius: 1.1em;
+      border: 1.5px solid #1e232e;
+      padding: 2.3em 2em 2em 2em;
+      min-width: 240px;
+      box-shadow: 0 4px 18px #4ec6ff14;
+      color: var(--white);
+      font-size: 1.09rem;
+      font-weight: 400;
+      transition: border .15s, box-shadow .18s;
+    }
+    .pricing-card:hover {
+      border-color: var(--blue);
+      box-shadow: 0 8px 28px #4ec6ff28;
+    }
+    .price {
+      color: var(--blue);
+      font-size: 2rem;
+      font-weight: 900;
+      margin-bottom: .4em;
+      margin-top: .2em;
+    }
+    /* CONTACT */
+    .contact-form {
+      background: #191c21;
+      border-radius: 1.2em;
+      border: 1.5px solid #1e232e;
+      box-shadow: 0 4px 22px #4ec6ff16;
+      max-width: 430px;
+      padding: 2.2em 2em;
+      color: var(--white);
+      margin-top: 1.2em;
+    }
+    .contact-form label {
+      display: block;
+      margin-bottom: .7em;
+      font-weight: 700;
+      color: var(--blue);
+      font-size: 1.04rem;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      background: #15171b;
+      border: 1px solid #22262d;
+      border-radius: 0.6em;
+      color: var(--white);
+      font-size: 1.07rem;
+      padding: .77em 1em;
+      margin-bottom: 1.3em;
+      font-family: inherit;
+      transition: border .16s;
+      outline: none;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: var(--blue);
+    }
+    .contact-btn {
+      background: var(--blue);
+      color: var(--black);
+      font-weight: 700;
+      border: none;
+      padding: 0.8em 2em;
+      border-radius: 2em;
+      cursor: pointer;
+      font-size: 1.09rem;
+      transition: background .18s;
+      box-shadow: 0 2px 12px #4ec6ff23;
+    }
+    .contact-btn:hover {
+      background: var(--white);
+      color: var(--blue);
+      box-shadow: 0 6px 24px #4ec6ff2a;
     }
     /* Responsive */
-    @media (max-width: 700px) {
-      .hero-card { padding: 2rem 1rem; }
-      .headline { font-size: 1.4rem;}
+    @media (max-width: 900px) {
+      .section {padding: 3rem 4vw;}
+    }
+    @media (max-width: 600px) {
+      .section {padding: 2rem 2vw;}
+      .hero-headline {font-size: 1.45rem;}
     }
   </style>
 </head>
 <body>
-  <section class="hero">
-    <div class="hero-card" data-aos="zoom-in">
-      <div class="hero-logo" data-aos="fade-down" data-aos-delay="200">
-        <!-- Your SVG/logo here -->
-      </div>
-      <div class="headline" data-aos="fade-up" data-aos-delay="400">
-        Digital Experiences for the Elite
-      </div>
-      <div class="subheadline" data-aos="fade-up" data-aos-delay="700">
-        Bespoke websites & client portals that set the new standard.
-      </div>
-      <a href="#contact" class="cta-btn" data-aos="fade-up" data-aos-delay="900">
-        Book Your Private Demo
-      </a>
+  <!-- HERO -->
+  <section class="hero section" data-aos="fade-up">
+    <div class="hero-headline">
+      Building <span class="hero-highlight">Modern</span> Digital Experiences.<br>
+      <span style="color:#6EC1E4;">Minimal. Bold. Unforgettable.</span>
+    </div>
+    <div class="hero-sub">
+      Elevate your brand with a website and client portal so clean and modern, your competition will wonder what hit them.
+    </div>
+    <a href="#contact" class="hero-btn">Get Started</a>
+  </section>
+  <!-- ABOUT -->
+  <section class="section" id="about" data-aos="fade-up">
+    <div class="section-title">About</div>
+    <div class="about-text">
+      We craft digital spaces for brands that refuse to blend in. Our philosophy is simple: less is more, and quality is everything. From startups to established names, we build with the details in mind—design, speed, and seamless CRM integration. The result? A site you’ll love, and customers will trust.
     </div>
   </section>
-  <section class="section" id="portfolio">
-    <div class="section-title" data-aos="fade-up">
-      Signature Work
+  <!-- FEATURES -->
+  <section class="section" id="features" data-aos="fade-up">
+    <div class="section-title">Features</div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-title">Ultra-Responsive</div>
+        Perfect on every device—no pinching, no squinting.
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">Custom CRM Integration</div>
+        Seamlessly manage your clients, leads, and more—right from your site.
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">Minimal UI</div>
+        No clutter, no distractions—just pure, focused design.
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">Lightning Fast</div>
+        Clean code and best practices for peak speed and SEO.
+      </div>
     </div>
+  </section>
+  <!-- PORTFOLIO -->
+  <section class="section" id="portfolio" data-aos="fade-up">
+    <div class="section-title">Portfolio</div>
     <div class="portfolio-grid">
-      <div class="portfolio-card" data-aos="fade-up" data-aos-delay="100">
-        <div class="portfolio-title">Black Diamond Realty</div>
-        <div class="portfolio-desc">
-          Ultra-luxury real estate platform with high-gloss visual identity, live chat, and exclusive member CRM.
-        </div>
+      <div class="portfolio-card">
+        <div class="portfolio-title">Skyline Health</div>
+        Wellness clinic site, bold minimalist layout, with appointment booking CRM.
       </div>
-      <div class="portfolio-card" data-aos="fade-up" data-aos-delay="250">
-        <div class="portfolio-title">Redline Performance Auto</div>
-        <div class="portfolio-desc">
-          Performance-focused automotive site featuring real-time inventory, glass dashboard, and stunning video hero.
-        </div>
+      <div class="portfolio-card">
+        <div class="portfolio-title">BlueMark Studios</div>
+        Creative agency portal, light blue on black, client dashboard for project management.
       </div>
-      <div class="portfolio-card" data-aos="fade-up" data-aos-delay="400">
-        <div class="portfolio-title">Virtue Private Consulting</div>
-        <div class="portfolio-desc">
-          Minimalist, silver-themed consulting site with secure client dashboard and parallax effect.
-        </div>
+      <div class="portfolio-card">
+        <div class="portfolio-title">Urban Kids Academy</div>
+        Clean, modern look for a school, parent CRM portal and event scheduling.
       </div>
     </div>
   </section>
-  <!-- More sections: About, Services, Testimonials, Contact ... -->
+  <!-- SERVICES -->
+  <section class="section" id="services" data-aos="fade-up">
+    <div class="section-title">Services</div>
+    <div class="services-list">
+      <div class="service-item">Full Website Builds</div>
+      <div class="service-item">Custom Client Portals</div>
+      <div class="service-item">CRM Integration</div>
+      <div class="service-item">Maintenance & Hosting</div>
+      <div class="service-item">Branding & Copywriting</div>
+      <div class="service-item">Speed Optimization</div>
+    </div>
+  </section>
+  <!-- TESTIMONIALS -->
+  <section class="section" id="testimonials" data-aos="fade-up">
+    <div class="section-title">Testimonials</div>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        “Our new site is so clean and fast—clients notice instantly. Best investment we've made.”
+        <div class="testimonial-author">— Olivia S., Clinic Owner</div>
+      </div>
+      <div class="testimonial-card">
+        “We booked more demos in two weeks than the last two months. Minimal works.”
+        <div class="testimonial-author">— Marcus D., Agency Director</div>
+      </div>
+      <div class="testimonial-card">
+        “Managing families and events is a breeze now. The CRM is next-level.”
+        <div class="testimonial-author">— Jamie L., School Admin</div>
+      </div>
+    </div>
+  </section>
+  <!-- PRICING -->
+  <section class="section" id="pricing" data-aos="fade-up">
+    <div class="section-title">Pricing</div>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="price">$1,000</div>
+        Essentials<br>
+        — Premium Website<br>
+        — Mobile Responsive<br>
+        — Basic CRM<br>
+        — 10-day Delivery
+      </div>
+      <div class="pricing-card">
+        <div class="price">$1,750</div>
+        Advanced<br>
+        — Full CRM Suite<br>
+        — Animated Effects<br>
+        — 2 Revision Rounds<br>
+        — Priority Support
+      </div>
+      <div class="pricing-card">
+        <div class="price">Custom</div>
+        Ultimate<br>
+        — Everything Above<br>
+        — Custom Integrations<br>
+        — Ongoing Maintenance<br>
+        — Growth Consulting
+      </div>
+    </div>
+  </section>
+  <!-- CONTACT -->
+  <section class="section" id="contact" data-aos="fade-up">
+    <div class="section-title">Contact</div>
+    <form class="contact-form">
+      <label for="name">Name</label>
+      <input id="name" type="text" required>
+      <label for="email">Email</label>
+      <input id="email" type="email" required>
+      <label for="message">Message</label>
+      <textarea id="message" rows="4" required></textarea>
+      <button class="contact-btn" type="submit">Send</button>
+    </form>
+  </section>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
     AOS.init({
-      duration: 900,
+      duration: 950,
       once: true,
       easing: "ease-in-out-cubic",
     });
